@@ -58,11 +58,11 @@ class DatabaseRegistry(
     private fun JsonNode.requiredText(name: String): String {
         val node = get(name)
 
-        if (node == null || node.isNull || node.asText().isBlank()) {
+        if (node == null || node.isNull || node.asString().isBlank()) {
             error("Pflichtfeld '$name' fehlt in DB-Konfiguration")
         }
 
-        return node.asText()
+        return node.asString()
     }
 
     @PreDestroy
